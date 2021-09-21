@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const port = process.env.PORT || 3000;
 
 const { Telegraf } = require('telegraf');
 const bot = new Telegraf(process.env.bot_token);
@@ -41,7 +42,7 @@ bot.launch();
 
 // App routes
 app.get('/', (req, res) => {
-    res.send('👋 Hello explorer \n its Teleddit here.')
+    res.send('👋 Hello explorer. \nIts Teleddit here.')
 });
 
-app.listen(3000);
+app.listen(port, console.log(`🤓 Listening on port ${port}`));
