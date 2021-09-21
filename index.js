@@ -15,7 +15,7 @@ bot.command('start', ctx => {
 
 🤩 WELCOME TO TELE-DDIT BOT 🤩
 
-[sent a subreddit name (r/ not needed)]`, {})
+Sent a subreddit name (r/ not needed)`, {})
         .then(m => console.log(`✔ Reply sented succesfully.`))
         .catch(e => console.log(`Error: ${e.toString()}`));
 });
@@ -23,9 +23,10 @@ bot.command('start', ctx => {
 // Hear anything
 bot.hears(/([^\s]+)/g, ctx => {
     let sub_reddit = ctx.message.text;
-    if (sub_reddit.indexOf(' ') != -1){
-        let words = sub_reddit.split(' '), sub_reddit = '';
-        words.forEach(word => sub_reddit += word);
+    if (sub_reddit.indexOf(' ') !== -1){
+        let words = sub_reddit.split(' '), _sub_reddit = '';
+        words.forEach(word => _sub_reddit += word);
+        sub_reddit = _sub_reddit;
     };
     if(sub_reddit.startsWith('r/')) sub_reddit = sub_reddit.substring(2);
     random_post(sub_reddit, ctx)
