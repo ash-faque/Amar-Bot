@@ -1,6 +1,11 @@
 const express = require('express');
 const app = express();
+app.use(express.static('public'));
+
 const port = process.env.PORT || 3000;
+
+const start_time = Date.now();
+console.log("⌛ Server start @ " + start_time);
 
 const { Telegraf } = require('telegraf');
 const bot = new Telegraf(process.env.bot_token);
@@ -42,8 +47,6 @@ process.once('SIGTERM', () => bot.stop('SIGTERM'));
 bot.launch();
 
 // App routes
-app.get('/', (req, res) => {
-    res.send('👋 Hello explorer. \nIts Teleddit here.')
-});
+app.get('/uptime', (req, res) =>  res.json({ "start_time": start_time }));
 
 app.listen(port, console.log(`🤓 Listening on port ${port}`));
