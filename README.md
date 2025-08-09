@@ -1,4 +1,7 @@
-# 🙂 
+# Amar Bot
 
 
-> silly joke
+Robot Amarjith
+
+
+`Telegram Bot`
